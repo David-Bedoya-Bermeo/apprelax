@@ -3900,9 +3900,10 @@ hr {
 
 .button-default-outline,
 .button-default-outline:focus {
-	color: #ffffff;
+	color: #0c0c0c;
 	background-color: transparent;
-	border-color: #ffffff;
+	border-color: #000a07;
+	text-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
 
 .button-default-outline:hover,
@@ -18097,7 +18098,7 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-corporate.rd-navbar-static .rd-navbar-main-outer {
-	background: #162e44;
+	background-image: linear-gradient(#0e0d0d, rgba(133, 165, 224, 0.795));
 }
 
 .rd-navbar-corporate.rd-navbar-static .rd-navbar-nav-wrap {

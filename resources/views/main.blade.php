@@ -56,10 +56,25 @@
     </div>
   </div>
   <div class="page">
-    <!-- Page Header imagen Arriba--><a class="banner banner-top"
-      href="{{ asset('https://www.templatemonster.com/intense-multipurpose-html-template.html')}}" target="_blank"><img src=""
-        alt="" /></a>
-    <header class="section page-header">
+        <div class="btnIS">
+          @if (Route::has('login'))
+            <div class=" hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                  @auth
+                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                  @else
+                  <div class="btnInicio">
+                    <a class="" href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                  </div>
+                  @if (Route::has('register'))
+                  <div class="btnRegistro">
+                    <a class="" href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                  </div>
+                    @endif
+                @endauth
+            </div>
+          @endif
+        </div>
+      <header class="section page-header">
       <!-- RD Navbar-->
       <div class="rd-navbar-wrap">
         <nav class="rd-navbar rd-navbar-corporate" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
@@ -87,23 +102,24 @@
                   </div>
                 </div>
                 <div class="rd-navbar-aside-right rd-navbar-collapse">
-                  <ul class="rd-navbar-corporate-contacts">
-                    <li>
-                      <div class="unit unit-spacing-xs">
-                        <div class="unit-left"><span class="icon fa fa-clock-o"></span></div>
+                <ul class="rd-navbar-corporate-contacts">
+                  <li>
+                    <div class="unit unit-spacing-xs">
+                      <div class="unit-left"><span class="icon fa fa-clock-o"></span></div>
+                      <div class="bajar">
                         <div class="unit-body">
                           <p>07:00<span>am</span> — 06:00<span>pm</span></p>
                         </div>
                       </div>
-                    </li>
-                    <li>
-                      <div class="unit unit-spacing-xs">
-                        <div class="unit-left"><span class="icon fa fa-phone"></span></div>
-                        <div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
-                      </div>
-                    </li>
-                  </ul><a class="button button-md button-default-outline-2 button-ujarak" href="#">Iniciar Sesión</a>
-                </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="unit unit-spacing-xs">
+                      <div class="unit-left"><span class="icon fa fa-phone"></span></div>
+                      <div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

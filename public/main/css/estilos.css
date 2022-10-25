@@ -29,3 +29,29 @@ a .esty {
 .format {
     text-shadow: 0px 0px 5px rgb(10, 10, 10);
 }
+
+.bajar {
+    margin-top: 15px;
+
+}
+
+.btnIS {
+    display: inline;
+
+}
+
+.btnInicio {
+    margin-left: 1px;
+    display: flex;
+    float: left;
+    padding-right: -50px;
+    padding-left: 50px;
+
+}
+
+.btnResgistro {
+    margin-left: 1px;
+    display: flex;
+    float: left;
+    padding-left: -50px;
+}

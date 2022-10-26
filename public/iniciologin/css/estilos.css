@@ -1,0 +1,14 @@
+.btn-posicion {
+    align-items: center;
+    float: none;
+    text-align: center;
+    justify-content: center
+}
+
+.login-form {
+    padding-top: 10px;
+}
+
+.colors {
+    background-color: rgb(183, 185, 187);
+}

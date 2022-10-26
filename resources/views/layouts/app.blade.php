@@ -9,11 +9,25 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
+    <!-- Fonts INICIO SESIÓN -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
+    <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ asset('iniciologin/images/icons/favicon.ico')}}" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/vendor/bootstrap/css/bootstrap.min.css')}}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/vendor/animate/animate.css')}}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/vendor/css-hamburgers/hamburgers.min.css')}}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/vendor/select2/select2.min.css')}}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/css/util.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('iniciologin/css/estilos.css')}}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
@@ -21,13 +35,13 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Hotel Relax') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse login-form" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
@@ -39,13 +53,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registro') }}</a>
                                 </li>
                             @endif
                         @else
@@ -71,10 +85,25 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="login-form">
+            <main class="py-4 container-login100">
+                @yield('content')
+            </main>
+        </div>
     </div>
+    <!-- Scripts Inicio Sesion-->
+	<script src="{{ asset('iniciologin/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+	 <!-- Scripts Inicio Sesion-->
+	<script src="{{ asset('iniciologin/vendor/bootstrap/js/popper.js')}}"></script>
+	<script src="{{ asset('iniciologin/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+	<!--===============================================================================================-->
+	<script src="{{ asset('iniciologin/vendor/select2/select2.min.js')}}"></script>
+	<!--===============================================================================================-->
+	<script src="{{ asset('iniciologin/vendor/tilt/tilt.jquery.min.js')}}"></script>
+	<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
 </body>
 </html>

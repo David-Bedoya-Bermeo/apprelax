@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('registro/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
 <div class="container limiter">
     <div class="row justify-content-center container-login100">
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
-                    <img src="{{ asset('iniciologin/images/hotelLog1.jpg')}}" class="rounded-4" alt="IMG">
+                <img src="{{ asset('iniciologin/images/hotelLog1.jpg')}}" class="rounded-4" alt="IMG">
             </div>
             <div class="col-md-8">
                 <div class="card">
@@ -15,29 +16,35 @@
                             @csrf
 
                             <div class="row mb-3">
-							<label for="email" class="col-md-4 col-form-label text-md-end"><i class="fa fa-envelope"></i>{{ __(' Correo Electronico') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end"><i
+                                        class="fa fa-envelope"></i>{{ __(' Correo Electronico') }}</label>
 
-                                <div class="col-md-6 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                                    <input id="email" type="email" class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                        
+                                <div class="col-md-6 validate-input"
+                                    data-validate="Valid email is required: ex@abc.xyz">
+                                    <input id="email" type="email" class="input100 @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end "><i class="fa fa-lock"></i>{{ __(' Contraseña') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end "><i
+                                        class="fa fa-lock"></i>{{ __(' Contraseña') }}</label>
 
                                 <div class="col-md-6 validate-input" data-validate="Password is required">
-                                    <input id="password" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                    
+                                    <input id="password" type="password"
+                                        class="input100 @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="current-password"><span toggle="#password"
+                                        class="zmdi zmdi-eye field-icon toggle-password"></span>
                                     @error('Contraseña')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
                                 </div>
                             </div>
@@ -45,9 +52,10 @@
                             <div class="row mb-3">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check btn-posicion">
-                                         <input class="form-check-input colors" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input class="form-check-input colors" type="checkbox" name="remember"
+                                            id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                         <label class="form-check-label" for="remember">
+                                        <label class="form-check-label" for="remember">
                                             {{ __('Recuérdame') }}
                                         </label>
                                     </div>
@@ -58,15 +66,15 @@
                                 <div class="col-md-6 offset-md-4">
                                     <div class="btn-posicion">
                                         <button type="submit" class="login100-form-btn">
-                                        {{ __('Iniciar Sesión') }}
+                                            {{ __('Iniciar Sesión') }}
                                         </button>
-                                    
+
                                         @if (Route::has('password.request'))
-                                            <span class="txt1">Recuperar contraseña</span>
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                    {{ __(' ¿Olvidaste tu contraseña?') }}
-                                                </a>
-                                            
+                                        <span class="txt1">Recuperar contraseña</span>
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            {{ __(' ¿Olvidaste tu contraseña?') }}
+                                        </a>
+
                                         @endif
                                     </div>
                                 </div>
@@ -75,8 +83,9 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </div>
-</div> 
+</div>
+<script src="{{ asset('registro/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('registro/js/main.js')}}"></script>
 @endsection
-  

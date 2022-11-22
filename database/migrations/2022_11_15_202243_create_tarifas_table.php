@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create('tarifas', function (Blueprint $table) {
             $table->id();
+            $table->double('precio');
+            $table->unsignedBigInteger('plan_id')->nullable;     ;
+
+            //Campos Foraneos 
+            $table->foreign('plan_id')->references('id')->on('plans') ->OnDelete('set null');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_user');
+        Schema::dropIfExists('tarifas');
     }
 };

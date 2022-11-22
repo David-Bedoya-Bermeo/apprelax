@@ -24,7 +24,17 @@ class RoleTableSeeder extends Seeder
         $role = new Role();
         
         $role->name = 'user'; 
-        $role->description = 'Usuario qe permite hacer reservas'; 
+        $role->description = 'Usuario que permite hacer reservas'; 
+        $role->save();
+
+        $role = new Role();
+        
+        $role->name = 'resepcionista'; 
+        $role->description = 'Resepcionista que permite hacer reservas'; 
+        $role->save();
+
+        $role->name = 'gerente'; 
+        $role->description = 'Gerente tiene acceso atodo el sistema'; 
         $role->save();
     }
 }

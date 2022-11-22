@@ -1,5 +1,7 @@
 .estilo-inicio {
     background-image: linear-gradient(#f8f4f4, rgba(133, 165, 224, 0.795));
+    width: 100%;
+    height: 100%;
 }
 
 .colors {
@@ -35,23 +37,17 @@ a .esty {
 
 }
 
-.btnIS {
-    display: inline;
-
+.barra-inicio {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    padding-left: 770px;
+    padding-top: 20px;
+    padding-right: 10px;
 }
 
-.btnInicio {
-    margin-left: 1px;
-    display: flex;
-    float: left;
-    padding-right: -50px;
-    padding-left: 50px;
-
-}
-
-.btnResgistro {
-    margin-left: 1px;
-    display: flex;
-    float: left;
-    padding-left: -50px;
+.btn-house {
+    font-size: 50px;
+    background-color: blue;
+    color: rgb(8, 8, 8);
 }

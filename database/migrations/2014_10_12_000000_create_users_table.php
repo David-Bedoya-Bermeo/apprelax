@@ -18,9 +18,18 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('avatar');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->unsignedBigInteger('persona_id')->nullable();          
+
+            //Campos Foraneos 
+            $table->foreign('persona_id')
+            ->references('id')
+            ->on('personas') 
+            ->OnDelete('set null')
+            ->onUpdate('set null');
             $table->timestamps();
         });
     }
@@ -31,7 +40,7 @@ return new class extends Migration
      * @return void
      */
     public function down()
-    {
+    {   
         Schema::dropIfExists('users');
     }
 };

@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Persona;
+use App\Models\Empleado;
+
 
 class User extends Authenticatable
 {
@@ -21,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -44,10 +48,13 @@ class User extends Authenticatable
 
     public function roles() 
     { 
+        
         return $this 
         ->belongsToMany('App\Models\Role') 
         ->withTimestamps(); 
+        
     }
+    
 
     public function authorizeRoles($roles) { 
         if ($this->hasAnyRole($roles)) 
@@ -76,11 +83,26 @@ class User extends Authenticatable
         return false; 
     }
 
-    public function hasRole($role) { 
+    public function hasRole($role) 
+    { 
         if ($this->roles()->where('name', $role)->first()) 
         { 
             return true; 
         } 
         return false; 
     }
+
+    
+     public function personas()
+    {
+        return $this
+        ->hasOne('App\Models\Persona')
+        ->withTimestamps(); 
+    }
+
+     public function reservas()
+    { 
+        return $this->belongsTo('App\Models\Reserva'); 
+    }
+    
 }

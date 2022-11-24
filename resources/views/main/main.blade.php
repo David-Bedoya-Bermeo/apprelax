@@ -18,6 +18,15 @@
   <link rel="stylesheet" href="{{ asset('main/css/fonts.css')}}">
   <link rel="stylesheet" href="{{ asset('main/css/style.css')}}">
   <link rel="stylesheet" href="{{ asset('main/css/estilos.css')}}">
+  <link rel="stylesheet" href="{{ asset('mainEmpleado/css/estilos.css')}}">
+  <link rel="stylesheet" href="{{ asset('mainEmpleado/plugins/fontawesome/css/fontawesome.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('mainEmpleado/plugins/fontawesome/css/all.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('mainEmpleado/css/feathericon.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('mainEmpleado/plugins/datatables/datatables.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('mainEmpleado/plugins/morris/morris.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('mainEmpleado/css/bootstrap-datetimepicker.min.css')}}">
+
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;0,900;1,400&display=swap"
     rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -60,45 +69,33 @@
       @if (Route::has('login'))
       <div class="barra-inicio">
         @auth
-        @can('admin.home')
-        <div class="btnhome">aqui
+
+        <div class="btnhome">
           <a class="ml-4 text-sm" href="{{ route('home') }}"><button class="btn btn-outline-secondary">Home
               <i class="fa-brands fa-fort-awesome"></i></button></a>
         </div>
-        @endcan
+
         <div class="btnhome">
-          <ul class="nav user-menu">
-            <li>
-              <a id="navbarDropdown" class="dropdown-toggle nav-link" href="#" role="button" data-bs-toggle="dropdown"
+          <ul class="">
+            <li class="">
+              <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false" v-pre><span class="user-img"><img class="rounded-circle"
                     src="{{ asset('uploads/avatars')}}/{{ Auth::user()->avatar}}" width="31" alt="Soeng Souy"></span>
                 {{ Auth::user()->email }}
               </a>
-              <div class="dropdown-menu">
-                <!-- imagen log cargo nombre -->
-                <div class="user-header">
-                  <div class="avatar avatar-sm"><img src="{{ asset('uploads/avatars')}}/{{ Auth::user()->avatar}}"
-                      alt="User Image" class="avatar-img rounded-circle">
-                  </div>
-                  <div class="user-text">
-                    <h6>{{ Auth::user()->name }}</h6>
-                    <p class="text-muted mb-0">{{ Auth::user()->roles()->first()->name }}</p>
-                  </div>
-                </div>
-                <!-- desconectarse -->
-                <div class=""><a class="dropdown-item" href="{{ url('/usuario')}}">My Profile</a>
-                </div>
-                <a class="dropdown-item" href="settings.html">Account Settings</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-              													document.getElementById('logout-form').submit();">
-                  {{ __('Logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-                </form>
-              </div>
             </li>
           </ul>
+        </div>
+        <div class="btnhome">
+          <a id="navbarDropdown" class="ml-4 text-sm btn btn-outline-secondary" href="#" role="button"
+            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
         </div>
         @else
         <div class="btnInicio">
@@ -150,7 +147,7 @@
                         <div class="unit-left"><span class="icon fa fa-clock-o"></span></div>
                         <div class="bajar">
                           <div class="unit-body">
-                            <p>07:00<span>am</span> — 06:00<span>pm</span></p>
+                            <p>Horaios de atención 24:00<span>/</span>06:00<span></span></p>
                           </div>
                         </div>
                       </div>
@@ -176,13 +173,17 @@
                   </ul>
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Inicio</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" href="#inicio">Inicio</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">Habitaciones</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#servicios">Servicios</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="typography.html">Promosiones</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#contactenos">Sobre nostros</a>
                     </li>
-                    <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contactenos</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#habitaciones">Habitaciones</a>
+                    </li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#galeria">Galería</a>
+                    </li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="#contactenos">Contactenos</a>
                     </li>
                   </ul>
                 </div>
@@ -236,7 +237,7 @@
                     inholvidables</h6>
                   <h2 class="oh font-weight-light" data-caption-animate="slideInUp" data-caption-delay="100">
                     <span>Que</span><span class="font-weight-bold"> Esperas?</span>
-                  </h2><a class="button button-default-outline button-ujarak sty" href="#"
+                  </h2><a class="button button-default-outline button-ujarak sty" href="{{url('main/create')}}"
                     data-caption-animate="fadeInLeft" data-caption-delay="0">Reserva</a>
                 </div>
               </div>
@@ -247,8 +248,8 @@
       <!-- Swiper Pagination-->
       <div class="swiper-pagination"></div>
     </section>
-    <!-- Section Box Categories-->
-    <section class="section section-lg section-top-1 bg-gray-4">
+    <!-- Section Box Categories inicio-->
+    <section class="section section-lg section-top-1 bg-gray-4" id="inicio">
       <div class="container offset-negative-1">
         <div class="box-categories cta-box-wrap">
           <div class="box-categories-content">
@@ -291,7 +292,7 @@
               src="{{ asset('main/images/hotel1.jpg')}}" alt="" width="556" height="382" />
           </div>
           <div class="col-lg-6 wow fadeInRight" data-wow-delay=".1s">
-            <div class="box-width-lg-470">
+            <div class="box-width-lg-470" id="sobrenostros">
               <h3>Conoce más sobre el Hotel Relax</h3>
               <!-- Bootstrap tabs-->
               <div
@@ -342,7 +343,7 @@
       </div>
     </section>
     <!--	Our Services-->
-    <section class="section section-sm">
+    <section class="section section-sm" id="servicios">
       <div class="container">
         <h3>Otros Servicios</h3>
         <div class="row row-30">
@@ -435,8 +436,8 @@
         </div>
       </div>
     </section>
-    <!-- Hot tours-->
-    <section class="section section-sm bg-default">
+    <!-- Hot tours   ofertas-->
+    <section class="section section-sm bg-default" id="habitaciones">
       <div class="container">
         <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">Ofertas</span></h3>
         <div class="row row-sm row-40 row-md-50">
@@ -459,7 +460,7 @@
                       presentan
                       para su consideración por un cliente que desea realizar un viaje turístico. El objeto de la oferta
                       turística es un consumidor,
-                      un turista.</p><a class="button button-black-outline button-ujarak" href="#">Buy This Tour</a>
+                      un turista.</p><a class="button button-black-outline button-ujarak" href="#">Reserva</a>
                     <div class="product-big-price-wrap"><span class="product-big-price">$790</span></div>
                   </div>
                 </div>
@@ -468,7 +469,7 @@
           </div>
           <div class="col-sm-6 col-md-12 wow fadeInLeft">
             <!-- Product Big-->
-            <article class="product-big">
+            <article class="product-big" id="habitaciones">
               <div class="unit flex-column flex-md-row align-items-md-stretch">
                 <div class="unit-left"><a class="product-big-figure" href="#"><img
                       src="{{ asset('main/images/hab1matrimonial.jpg')}}" alt="" width="600" height="366" /></a></div>
@@ -485,8 +486,8 @@
                       presentan para su consideración
                       por un cliente que desea realizar un viaje turístico. El objeto de la oferta turística es un
                       consumidor, un turista.
-                    </p><a class="button button-black-outline button-ujarak" href="#">Buy This Tour</a>
-                    <div class="product-big-price-wrap"><span class="product-big-price">$890</span></div>
+                    </p><a class="button button-black-outline button-ujarak" href="#">Reservar</a>
+                    <div class="product-big-price-wrap"><span class="product-big-price">$890 cop</span></div>
                   </div>
                 </div>
               </div>
@@ -496,7 +497,7 @@
       </div>
     </section>
     <!-- Different People-->
-    <section class="section section-sm">
+    <section class="section section-sm" id="contactenos">
       <div class="container">
         <h3 class="title-block find-car oh"><span class="d-inline-block wow slideInUp">Contactese con nuestro
             personal</span></h3>
@@ -600,7 +601,7 @@
       </div>
     </section>
     <!----------------------------Galería------------------------>
-    <section class="section section-sm section-top-0 section-fluid section-relative bg-gray-4">
+    <section class="section section-sm section-top-0 section-fluid section-relative bg-gray-4" id="galeria">
       <div class="container-fluid">
         <h6 class="gallery-title">Galería</h6>
         <!-- Owl Carousel-->
@@ -670,6 +671,8 @@
         </div>
       </div>
     </section>
+    <iframe width="520" height="400" frameborder="0"
+      src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=%20+(Colombia)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
     <!-- Page Footer--><a class="banner"
       href="{{ asset('https://www.templatemonster.com/intense-multipurpose-html-template.html')}}" target="_blank"></a>
     <footer class="section footer-corporate context-dark">
@@ -776,6 +779,17 @@
   <!-- Global Mailform Output-->
   <div class="snackbars" id="form-output-global"></div>
   <!-- Javascript-->
+  <script src="{{ asset('mainEmpleado/js/jquery-3.5.1.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/js/popper.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/js/moment.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/js/select2.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/js/bootstrap-datetimepicker.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/plugins/datatables/datatables.min.js')}}"></script>
+  <script src="{{ asset('mainEmpleado/js/script.js')}}"></script>
+  <script src="https://kit.fontawesome.com/47cf1f14c8.js" crossorigin="anonymous"></script>
   <script src="{{ asset('main/js/core.min.js')}}"></script>
   <script src="{{ asset('main/js/script.js')}}"></script>
 

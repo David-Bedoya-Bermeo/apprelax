@@ -18,7 +18,11 @@
 }
 
 .btnhome {
-    padding-left: 80px;
+    padding-left: 20px;
+}
+
+.btn-home {
+    padding-left: 70px;
 }
 
 .btn-ad {

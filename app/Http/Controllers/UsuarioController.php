@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario;
+use App\Models\User;
 
 class UsuarioController extends Controller
 {
@@ -23,7 +25,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

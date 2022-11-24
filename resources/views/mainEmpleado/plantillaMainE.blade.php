@@ -29,7 +29,6 @@
 
 </head>
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-sin
 
 <body>
 	<div class="main-wrapper">
@@ -167,14 +166,14 @@ sin
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Usuario </span> <span
 									class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="{{ url('persona') }}"> Gestionar Usuario </a></li>
+								<li><a href="{{ url('usuario') }}"> Gestionar Usuario </a></li>
 							</ul>
 						</li>
 						<!--------------------Gestión Cliente------------------>
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Cliente </span> <span
 									class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="{{ url('/cliente')}}">Gestionar Cliente </a></li>
+								<li><a href="{{ url('/cliente')}}">Agregar Cliente </a></li>
 								<li><a href="{{ url('/cliente')}}">Agregar Cliente </a></li>
 
 							</ul>
@@ -333,8 +332,9 @@ sin
 		@yield('contenidoPersona')
 		<!-- crud Plan -->
 		@yield('contenidoPlan')
-
 		@yield('contenidoTarifa')
+		@yield('contenidoUser')
+
 
 
 	</div>

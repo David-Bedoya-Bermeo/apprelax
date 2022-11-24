@@ -19,7 +19,6 @@ class Servicio extends Model
     }
      public function plans() 
     { 
-        
         return $this 
         ->belongsToMany('App\Models\Plan') 
         ->withTimestamps(); 
